@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//LOGGER"
+        "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration>
+
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!--针对某一路径的日志做单独限制，logger 与 category 可以达到一致效果 -->
+    <logger name="org.apache.hadoop" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <logger name="io.netty" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <category name="org.apache.spark" additivity="false">
+        <priority value="warn"/>
+        <appender-ref ref="stdout"/>
+    </category>
+
+    <category name="org.spark-project.jetty" additivity="false">
+        <priority value="warn"/>
+        <appender-ref ref="stdout"/>
+    </category>
+
+    <category name="org.apache.spark.ui" additivity="false">
+        <priority value="info"/>
+        <appender-ref ref="stdout"/>
+    </category>
+
+    <root>
+        <priority value="debug"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</log4j:configuration>
+
