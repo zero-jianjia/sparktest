@@ -16,6 +16,7 @@ object CreateRDD {
 
         val collection = sparkContext.parallelize(1 to 100)//根据集合创建了ParallelCollectionRDD
         println(collection.count())
+        
     }
 
     def createdByHDFS: Unit ={

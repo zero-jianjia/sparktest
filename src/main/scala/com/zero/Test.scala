@@ -30,9 +30,9 @@ object Test {
         val sparkContext = new SparkContext(sparkConf)
 //        val streamContext = new StreamingContext(sparkContext, Durations.seconds(5))
 
-        val pvPairDStream = sparkContext.parallelize(getPVSeq)
-        val clickPairDStream = sparkContext.parallelize(getClickSeq)
-        val billPairDStream = sparkContext.parallelize(getBillSeq)
+//        val pvPairDStream = sparkContext.parallelize(getPVSeq)
+//        val clickPairDStream = sparkContext.parallelize(getClickSeq)
+//        val billPairDStream = sparkContext.parallelize(getBillSeq)
 
 //        val pvDStream = pvPairDStream.filter(_.split("\t").length > 0)
 //        val clickDStream = clickPairDStream.filter(_.split("\t").length > 0)
