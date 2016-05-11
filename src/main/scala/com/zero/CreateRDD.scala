@@ -8,6 +8,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object CreateRDD {
     def main(args: Array[String]) {
         createdByScalaCollection
+//        createdByHDFS
     }
 
     def createdByScalaCollection: Unit ={
@@ -23,7 +24,8 @@ object CreateRDD {
         val conf = new SparkConf().setAppName("CreateRDD").setMaster("local")
         val sparkContext = new SparkContext(conf)
 
-        val hdfsRDD = sparkContext.textFile("...")//创建了HadoopRDD
+        val hdfsRDD = sparkContext.textFile("")//创建了HadoopRDD
+        println(hdfsRDD.count())
     }
 
     def createdByOtherRDD: Unit ={
