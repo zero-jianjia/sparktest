@@ -1,5 +1,6 @@
 package com.zero
 
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 import org.apache.spark.streaming.{Durations, StreamingContext}
@@ -26,8 +27,9 @@ object Test {
     private val billTimeLoc: Int = 6
 
     def main(args: Array[String]) {
-        val sparkConf: SparkConf = new SparkConf().setMaster("local").setAppName("Straming")
-        val sparkContext = new SparkContext(sparkConf)
+        println(new File("C:\\Users\\Inuyasha\\git\\sparktest\\files\\test.log").exists())
+//        val sparkConf: SparkConf = new SparkConf().setMaster("local").setAppName("Straming")
+//        val sparkContext = new SparkContext(sparkConf)
 //        val streamContext = new StreamingContext(sparkContext, Durations.seconds(5))
 
 //        val pvPairDStream = sparkContext.parallelize(getPVSeq)
