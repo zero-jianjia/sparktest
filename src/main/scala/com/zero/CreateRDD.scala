@@ -35,6 +35,5 @@ object CreateRDD {
         val otherRDD = sparkContext.parallelize(1 to 100)//根据集合创建了ParallelCollectionRDD
 
         val  newRDD = otherRDD.map(_ * 2)
-
     }
 }
