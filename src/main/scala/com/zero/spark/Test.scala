@@ -1,10 +1,6 @@
-package com.zero
+package com.zero.spark
 
 import java.io.File
-import java.util.concurrent.TimeUnit
-
-import org.apache.spark.streaming.{Durations, StreamingContext}
-import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * Created by jianjia1 on 16/04/07.
