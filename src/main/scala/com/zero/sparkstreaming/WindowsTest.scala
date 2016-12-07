@@ -13,7 +13,7 @@ object WindowsTest {
         val ssc = new StreamingContext(conf, Seconds(1))//(conf: SparkConf, batchDuration: Duration)
         
         val lines = ssc.socketTextStream(
-            "127.0.0.1",
+            "10.210.228.92",
             6666,
             StorageLevel.MEMORY_AND_DISK_SER) // 服务器地址，端口，序列化方案
         val words = lines.flatMap(_.split(","))

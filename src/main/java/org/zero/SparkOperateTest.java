@@ -34,10 +34,7 @@ public class SparkOperateTest {
         JavaRDD<Tuple2<String, Integer>> rdd1 = jsc.parallelize(Arrays.asList(new Tuple2<String, Integer>("a", 3),
                 new Tuple2<String, Integer>("b", 3),new Tuple2<String, Integer>("c", 10)));
 
-        
-        
     }
-
 
     public static void mapOperate(JavaSparkContext jsc) {
         JavaRDD<String> rdd = jsc.parallelize(Arrays.asList("spark", "storm"));

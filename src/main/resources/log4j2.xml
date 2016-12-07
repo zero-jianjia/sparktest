@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- No need to set system property "Log4jContextSelector" to any value when 
+	using <asyncLogger> or <asyncRoot>. -->
+<Configuration status="error">
+    <Properties>
+        <Property name="logPath">dsp/logs</Property>
+    </Properties>
+
+
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+
+        <RollingRandomAccessFile name="centerAPI" bufferSize="262144"
+                     fileName="${logPath}/centerAPI.log" append="true" immediateFlush="false"
+                     filePattern="${logPath}/centerAPI.%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d %p [%c] -- %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <AsyncRoot level="info">
+            <AppenderRef ref="centerAPI"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>
