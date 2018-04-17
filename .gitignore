@@ -17,3 +17,6 @@ coverage-report/
 *.iml
 *.ipr
 *.iws
+
+# other
+logs/
