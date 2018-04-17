@@ -1,0 +1,15 @@
+apply plugin: 'war'
+
+dependencies {
+//    providedCompile(group: 'org.apache.storm', name: 'storm-core', version: '1.2.0') {
+//        exclude module: "ring-cors"
+//    }
+//    providedCompile files('lib/ring-cors-0.1.5.jar')
+
+
+    compile(group: 'org.apache.storm', name: 'storm-core', version: '1.2.0') {
+        exclude module: "ring-cors"
+    }
+    compile files('lib/ring-cors-0.1.5.jar')
+}
+
