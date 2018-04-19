@@ -12,9 +12,8 @@ import org.apache.storm.tuple.Values;
 
 /**
  * 订阅sentence spout发射的tuple流，实现分割单词
- *
  */
-public class SplitSentenceBolt extends BaseRichBolt {
+public class SplitBolt extends BaseRichBolt {
     //BaseRichBolt是IComponent和IBolt接口的实现
     //继承这个类，就不用去实现本例不关心的方法
 
@@ -24,13 +23,14 @@ public class SplitSentenceBolt extends BaseRichBolt {
      * 这个方法在blot初始化时调用，可以用来准备bolt用到的资源,比如数据库连接。
      */
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
-        this.collector=collector;
+        System.out.println("DocumentSpout: " + stormConf.get("NAME"));
+        this.collector = collector;
     }
 
     /**
      * SplitSentenceBolt核心功能是在类IBolt定义execute()方法，这个方法是IBolt接口中定义。
      * 每次Bolt从流接收一个订阅的tuple，都会调用这个方法。
-     * 本例中,收到的元组中查找“sentence”的值,
+     * 本例中,收到的元组中查找“line”的值,
      * 并将该值拆分成单个的词,然后按单词发出新的tuple。
      */
     public void execute(Tuple input) {
@@ -39,7 +39,7 @@ public class SplitSentenceBolt extends BaseRichBolt {
         System.out.println(input.getString(0));
         System.out.println("################");
 
-        String sentence = input.getStringByField("sentence");
+        String sentence = input.getStringByField("line");
         String[] words = sentence.split(" ");
         for (String word : words) {
             this.collector.emit(new Values(word));//向下一个bolt发射数据

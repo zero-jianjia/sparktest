@@ -19,6 +19,7 @@ public class ReportBolt extends BaseRichBolt {
     private HashMap<String, Long> counts = null;//保存单词和对应的计数
 
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
+        System.out.println("ReportBolt: "+stormConf.get("NAME"));
         this.counts = new HashMap<>();
     }
 

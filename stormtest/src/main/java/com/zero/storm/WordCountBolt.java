@@ -30,6 +30,7 @@ public class WordCountBolt extends BaseRichBolt {
      * 而在prepare()方法中对不可序列化的对象进行实例化。
      */
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
+        System.out.println("WordCountBolt: " + stormConf.get("NAME"));
         this.collector = collector;
         this.counts = new HashMap<>();
     }
