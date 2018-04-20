@@ -1,0 +1,3 @@
+rootProject.name = 'streamcompute'
+include 'sparktest'
+include 'stormtest'
