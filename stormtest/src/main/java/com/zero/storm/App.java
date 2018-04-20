@@ -30,6 +30,7 @@ public class App {
         //SplitSentenceBolt单词分割器设置4个Task，2个Executeor(线程)
         builder.setBolt("split-bolt", splitBolt, 2).setNumTasks(4)
                 .shuffleGrouping("document-spout");
+        // 默认一个parallelism（一个executor）运行一个task，但是可以通过setNumTasks来指定task数，上面的例子就是2个executor，4个task，一个task对应一个实例
 
         // SplitBolt --> WordCountBolt
 
@@ -46,9 +47,9 @@ public class App {
 
         Config config = new Config();//Config类是一个HashMap<String,Object>的子类，用来配置topology运行时的行为
         config.put("NAME", "zero"); // 会传给Spout、Bolt
+        config.setNumAckers(0);// 默认acker会有一个executor
 
-        //设置worker数量
-        //config.setNumWorkers(2);
+        //config.setNumWorkers(2); //设置worker数量
         LocalCluster cluster = new LocalCluster();
 
         //本地提交
