@@ -1,15 +1,14 @@
-apply plugin: 'war'
+plugins {
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+    id "nebula.provided-base" version "3.1.0"
+}
+
+apply plugin: 'nebula.provided-base'
 
 dependencies {
-//    providedCompile(group: 'org.apache.storm', name: 'storm-core', version: '1.2.0') {
-//        exclude module: "ring-cors"
-//    }
-//    providedCompile files('lib/ring-cors-0.1.5.jar')
-
-//    compile(group: 'org.apache.storm', name: 'storm-core', version: '1.2.0')
-    compile(group: 'org.apache.storm', name: 'storm-core', version: '1.2.0') {
+    provided(group: 'org.apache.storm', name: 'storm-core', version: '1.2.0') {
         exclude module: "ring-cors"
     }
-    compile files('lib/ring-cors-0.1.5.jar')
+    provided files('lib/ring-cors-0.1.5.jar')
 }
 
