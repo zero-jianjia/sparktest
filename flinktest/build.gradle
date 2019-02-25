@@ -1,0 +1,23 @@
+
+apply plugin: 'scala'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+dependencies {
+    compile group: 'org.apache.flink', name: 'flink-core', version: '1.7.0'
+    compile group: 'org.apache.flink', name: 'flink-streaming-java_2.12', version: '1.7.0'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}

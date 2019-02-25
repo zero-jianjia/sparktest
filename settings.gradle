@@ -2,3 +2,5 @@ rootProject.name = 'streamcompute'
 include 'sparktest'
 include 'stormtest'
 include 'beamtest'
+include 'flinktest'
+

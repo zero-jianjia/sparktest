@@ -2,7 +2,10 @@ package com.zero.storm;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.BasicOutputCollector;
+import org.apache.storm.topology.IBasicBolt;
 import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
 
@@ -14,13 +17,27 @@ import java.util.Map;
 /**
  * 生成一份报告
  */
-public class ReportBolt extends BaseRichBolt {
+public class ReportBolt extends BaseBasicBolt {
 
     private HashMap<String, Long> counts = null;//保存单词和对应的计数
 
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
         System.out.println("ReportBolt: "+stormConf.get("NAME"));
         this.counts = new HashMap<>();
+    }
+
+    public void prepare(Map stormConf, TopologyContext context) {
+        this.counts = new HashMap<>();
+    }
+
+    @Override
+    public void execute(Tuple input, BasicOutputCollector collector) {
+        String word = input.getStringByField("word");
+        Long count = input.getLongByField("count");
+        this.counts.put(word, count);
+
+        //实时输出
+        System.out.println("结果:" + this.counts);
     }
 
     public void execute(Tuple input) {
@@ -54,5 +71,6 @@ public class ReportBolt extends BaseRichBolt {
         }
         System.out.println("----------------------------");
     }
+
 
 }
